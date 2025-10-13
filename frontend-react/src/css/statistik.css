@@ -1,0 +1,185 @@
+/* Container Utama */
+.statistik-section.futuristic-dark {
+    /* Background sangat gelap, hampir hitam */
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 700px; /* Batasi lebar */
+    /* max-height: 400px; */
+    transition: transform 0.3s ease-in-out;
+    margin-left: 0px;
+    margin-top: 24px;
+    border: 1px solid #222;
+    box-shadow: 0px 10px 30px #222;
+}
+
+/* Judul */
+.statistik-title {
+    color: #000000; /* Teks putih terang */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Teks Aksen */
+.highlight-text {
+    /* Gradien yang cerah untuk aksen pada teks */
+    background: #000000;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* text-shadow: 0 0 5px rgba(0, 255, 251, 0.7); Sedikit glow pada teks */
+}
+
+/* ResponsiveContainer - untuk memastikan grafik responsif */
+.statistik-section .recharts-responsive-container {
+    padding-top: 10px;
+}
+
+/* Kustomisasi Tooltip di Recharts (Jika diperlukan kustomisasi lebih lanjut di luar properti Recharts) */
+/* Biasanya, properti 'contentStyle' dan 'itemStyle' di Recharts sudah cukup. */
+/* Namun, jika ingin menimpa gaya bawaan, gunakan selector yang spesifik seperti ini: */
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+    /* Hanya untuk memastikan properti tooltip dari Recharts yang kita set di JSX bekerja */
+    /* Karena kita sudah mengaturnya di JSX, ini mungkin tidak diperlukan, */
+    /* tapi bisa berguna jika ada masalah spesifisitas CSS. */
+}
+
+/* Container Utama */
+.video-background-container {
+    /* Set posisi relatif agar elemen di dalamnya (video dan overlay) bisa diatur posisinya secara absolut */
+    position: relative;
+    /* Tentukan tinggi section. Misalnya, 50vh agar setengah layar, atau 100vh agar full layar. */
+    height: 50vh; 
+    width: 700px;
+    /* Pastikan tidak ada overflow yang terlihat */
+    overflow: hidden; 
+    display: flex; /* Untuk memposisikan konten */
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin-top: 20px;
+    float: right;
+}
+
+/* Video */
+.dashboard-video {
+    /* Set posisi absolut agar video menjadi lapisan paling bawah */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Pastikan video menutupi seluruh area container */
+    width: 700px;
+    height: 400px;
+    /* Atur agar video selalu mengisi, memotong jika perlu */
+    object-fit: cover; 
+    /* Pastikan video berada di bawah overlay (z-index lebih rendah) */
+    z-index: 1; 
+    border-radius: 20px;
+    
+}
+
+/* Overlay (Lapisan Gelap) */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 700px;
+    height: 400px;
+    /* Gunakan warna hitam atau gelap dengan transparansi tinggi */
+    /* background-color: rgba(0, 0, 0, 0.65); 65% kegelapan */
+    /* Tambahkan sedikit gradien dari atas ke bawah untuk efek dramatis (opsional) */
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+    /* Pastikan overlay di atas video */
+    z-index: 2; 
+    /* Beri sedikit filter blur pada overlay untuk meningkatkan "vibe" (opsional) */
+    border-radius: 20px;
+    justify-content: right;
+}
+
+/* Konten Dashboard (Teks, Card, dll.) */
+.dashboard-content {
+    /* Pastikan konten berada di atas video dan overlay */
+    position: relative;
+    z-index: 3; 
+    /* Styling agar konten terlihat jelas */
+    color: #ffffff; /* Warna teks putih */
+    text-align: center;
+    padding: 20px;
+    /* Tambahkan efek shadow pada teks agar lebih menonjol */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.dashboard-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.dashboard-content p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.dashboard-content span {
+    /* Warna inti teks - Putih kebiruan */
+    color: #f8f2dd; 
+    
+    /* Efek Neon Glow - Warna Biru Muda/Cyan */
+    text-shadow: 
+        /* Inti Cahaya */
+        0 0 5px rgba(250, 238, 135, 0.9),  /* Biru Muda (Sky Blue) */
+        0 0 15px rgba(250, 248, 135, 0.8), 
+        
+        /* Cahaya yang Lebih Luas */
+        0 0 30px rgba(251, 255, 0, 0.7),  /* Biru Neon */
+        0 0 50px rgba(255, 230, 0, 0.6),
+        
+        /* Sedikit Cahaya Ungu/Elektrik (Opsional) */
+        0 0 70px rgba(226, 153, 43, 0.4); 
+        
+    /* Membuat teks menyala dengan animasi */
+    animation: lightningFlash 3s infinite; /* Animasi berulang setiap 3 detik */
+}
+
+/* Keyframes untuk Efek Kedipan (Flash) Petir */
+@keyframes lightningFlash {
+    /* Normal Glow */
+    0%, 10%, 20%, 30%, 50%, 70%, 100% {
+        opacity: 1;
+        text-shadow: 
+            0 0 5px rgba(250, 219, 135, 0.9),  
+            0 0 30px rgba(255, 208, 0, 0.7);
+    }
+
+    /* Flash yang Lebih Terang */
+    5% {
+        opacity: 0.8; /* Sedikit redup */
+        text-shadow: 
+            0 0 10px #f5841a, /* Putih sangat terang */
+            0 0 40px #f78f49, /* Cyan terang */
+            0 0 90px #ffa600; /* Biru pekat */
+    }
+    
+    /* Flash Tiba-tiba yang Sangat Terang */
+    15%, 35%, 55% {
+        opacity: 1;
+        text-shadow: 
+            0 0 15px #ffffff,
+            0 0 60px #00ffff, 
+            0 0 120px #e07700; /* Ungu gelap untuk kejutan */
+        color: #fff;
+    }
+
+    /* Redup Total (Efek Petir menghilang sebentar) */
+    45%, 65% {
+        opacity: 0.3;
+        text-shadow: none;
+        color: #222;
+    }
+}

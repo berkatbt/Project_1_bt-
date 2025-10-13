@@ -1,0 +1,228 @@
+/* === SIDEBAR PREMIUM === */
+.sidebar {
+  width: 270px;
+  height: 100vh;
+  background: #fff;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+  box-shadow: 8px 0 25px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sidebar:hover {
+  box-shadow: 12px 0 30px rgba(0, 0, 0, 0.45);
+}
+
+/* === SIDEBAR HEADER === */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header:hover {
+  transform: translateY(-3px);
+}
+
+.border-profil-admin {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.border-profil-admin:hover {
+  box-shadow: 0 0 0 6px rgba(247, 224, 94, 0.4), 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.border-profil-admin img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden; /* sembunyikan overflow */
+  max-width: 180px; /* batas lebar container */
+}
+
+.admin-name h3 {
+  font-size: clamp(12px, 2vw, 18px); /* ukuran minimal 12px, maksimal 18px, responsif */
+  font-weight: 700;
+  white-space: nowrap; /* agar tetap satu baris */
+  overflow: hidden;
+  text-overflow: ellipsis; /* tampilkan ... jika terpotong */
+}
+
+.admin-name p {
+  font-size: clamp(10px, 1.8vw, 14px);
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.Judul-text-admin {
+  color: #FFD700;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-left: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #000000, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === NAV MENU === */
+.nav-menu-admin {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.nav-menu-admin ul {
+  list-style: none;
+}
+
+.nav-menu-admin li {
+  margin: 12px 0;
+}
+
+.nav-menu-admin a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-menu-admin a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #FFD700;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+
+.nav-menu-admin a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFD700;
+  transform: translateX(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-menu-admin a:hover::before {
+  transform: scaleY(1);
+}
+
+.nav-menu-admin img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(1) invert(0); /* putih */
+  transition: all 0.3s ease;
+}
+
+.nav-menu-admin a:hover img {
+  filter: brightness(1) invert(0); 
+  transform: scale(1.15);
+}
+
+/* === LOGOUT BUTTON === */
+.button-logout-admin {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button-logout-admin button {
+  background: linear-gradient(135deg, #000, #333);
+  color: #ffffff;
+  border: 2px solid #000;
+  width: 200px;
+  height: 48px;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 05 6px 16px rgb(255, 217, 0);
+}
+
+.button-logout-admin button:hover {
+  background: linear-gradient(135deg, #000, #4e4e4e);
+  color: #FFD900;
+  box-shadow: 05 6px 16px rgb(255, 217, 0);
+  transform: translateY(-2px);
+}
+
+.button-logout-admin button:active {
+  transform: translateY(1px);
+}
+
+/* === OPTIONAL: RIPPLE EFFECT (DASAR) === */
+.button-logout-admin button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(31, 31, 31, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.button-logout-admin button:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* === ANIMASI KILAU EMAS === */
+@keyframes goldFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes shineSweep {
+  0% { transform: rotate(25deg) translate(-150%, -50%); }
+  100% { transform: rotate(25deg) translate(150%, -50%); }
+}

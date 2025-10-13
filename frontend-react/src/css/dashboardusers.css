@@ -1,0 +1,119 @@
+.dashboard-container-data-users {
+  background-color: #fff;
+  color: #111;
+  font-family: "Poppins", sans-serif;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 30px 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.dashboard-title-activity-data-users {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #000;
+  border-left: 5px solid #000;
+  padding-left: 10px;
+}
+
+.dashboard-container-data-users p {
+  font-size: 1rem;
+  margin: 5px 0 15px;
+}
+
+.table-responsive-wrapper-data-users {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.users-table-data-users {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* HEADER TABEL */
+.users-table-data-users thead {
+  background-color: #000;
+  color: #fff;
+}
+
+.users-table-data-users th,
+.users-table-data-users td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.users-table-data-users th {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* BARIS GENAP & GANJIL */
+.even-row {
+  background-color: #fafafa;
+}
+
+.odd-row {
+  background-color: #fff;
+}
+
+/* .users-table-data-users tr:hover {
+  transition: 0.2s;
+} */
+
+/* STATUS BADGE */
+.status-badge {
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.status-badge.online {
+  background-color: #000;
+  color: #fff;
+}
+
+.status-badge.offline {
+  background-color: #e6e6e6;
+  color: #333;
+}
+
+/* LAST LOGIN & NAMA */
+.name-cell-data-users {
+  font-weight: 500;
+}
+
+.email-cell-data-users {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.last-login-cell-data-users {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* TOMBOL HAPUS */
+.delete-btn-data-users {
+  background-color: transparent;
+  color: #e63946;
+  border: 1px solid #e63946;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.3s;
+}
+
+.delete-btn-data-users:hover {
+  background-color: #e63946;
+  color: #fff;
+  transform: scale(1.05);
+}
