@@ -105,6 +105,8 @@ export default function DashboardBuku() {
         setShowModal(true);
     };
 
+    
+
     if (loading) return <p style={{ textAlign: "center", color: "white" }}>Memuat data buku...</p>;
 
     return (

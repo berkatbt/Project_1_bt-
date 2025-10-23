@@ -1,0 +1,123 @@
+======CARA MEMBUAT BORDER==========
+Class	Radius	Contoh
+rounded-none	0px	❌ tanpa lengkung
+rounded-sm	kecil	halus banget
+rounded	default	sedang
+rounded-md	sedang+	agak lebih lembut
+rounded-lg	besar	sering dipakai di card
+rounded-xl	ekstra besar	
+rounded-2xl	lebih besar lagi	
+rounded-3xl	super lembut	
+rounded-full	melingkar penuh (bulat sempurna, cocok untuk avatar)	
+
+
+
+//////////Sudut tertentu saja///////////
+Kamu bisa melengkungkan hanya sisi tertentu 
+
+Class	Sudut yang dilengkungkan
+rounded-t-lg	atas kiri & kanan
+rounded-b-lg	bawah kiri & kanan
+rounded-l-lg	kiri atas & bawah
+rounded-r-lg	kanan atas & bawah
+rounded-tl-lg	hanya kiri atas
+rounded-tr-lg	hanya kanan atas
+rounded-bl-lg	hanya kiri bawah
+rounded-br-lg	hanya kanan bawah 
+
+=======================================
+
+=======WARNA TEXT===========
+Di Tailwind CSS, mewarnai teks sangat gampang pakai class:
+
+text-{color}-{shade}
+
+💡 Contoh dasar:
+<p class="text-red-500">Teks ini berwarna merah</p>
+<p class="text-blue-600">Teks ini berwarna biru</p>
+<p class="text-green-400">Teks ini berwarna hijau muda</p>
+<p class="text-gray-300">Teks abu-abu terang</p>
+
+🎨 Daftar warna populer:
+Warna	Class Contoh	Hasil
+Merah	text-red-500	🔴
+Biru	text-blue-500	🔵
+Hijau	text-green-500	🟢
+Kuning	text-yellow-400	🟡
+Ungu	text-purple-500	🟣
+Abu-abu	text-gray-400	⚪
+Putih	text-white	🤍
+Hitam	text-black	🖤
+
+untuk costum
+bg-[color] -> bg-[#fff]
+
+==========================================================
+
+========================sisi berdor========================
+🧭 1. Dasar: Border di sisi tertentu
+
+Gunakan format:
+
+border-t|r|b|l-{ukuran}
+    
+
+👉 t = top (atas)
+👉 r = right (kanan)
+👉 b = bottom (bawah)
+👉 l = left (kiri)
+
+=========================================================
+
+=========geser components============================
+           🧭 1. Geser dengan margin (m, ml, mt, mr, mb)
+
+➡️ Ini cara paling umum buat “dorong” elemen ke arah tertentu.
+
+<div className="ml-10 mt-5">
+  <p>Komponen ini geser ke kanan 2.5rem dan ke bawah 1.25rem</p>
+</div>
+
+Arah	Class	Contoh
+Kiri	ml-[value]	ml-10
+Kanan	mr-[value]	mr-5
+Atas	mt-[value]	mt-8
+Bawah	mb-[value]	mb-6
+Semua sisi	m-[value]	m-4
+
+🔹 Kamu bisa pakai nilai seperti m-4, m-10, atau custom: ml-[120px]
+
+==============box-show==================================
+⚙️ Dasar Box Shadow di Tailwind
+Class	Efek
+shadow-sm	       ayangan kecil halus
+shadow	           default (medium)
+shadow-md	       agak tebal
+shadow-lg	       besar
+shadow-xl	       ekstra besar
+shadow-2xl	       sangat besar
+shadow-inner	   bayangan ke dalam
+shadow-none	       tanpa bayangan
+=========================================================
+
+==============ukuran text bawaan=========================
+1. Ukuran teks bawaan Tailwind
+
+Tailwind punya skala ukuran teks dari kecil sampai super besar:
+
+________________________________________________
+Tailwind   |    style          | deskripsi
+________________________________________________
+text-xs	   |   0.75rem (12px)	 |   sangat kecil
+text-sm	   |  0.875rem (14px)  | 	 kecil
+text-base  |  1rem (16px)	     |   normal
+text-lg	   |  1.125rem (18px)	 |   gak besar
+text-xl	   |  1.25rem (20px)	 |   besar
+text-2xl	 |  1.5rem (24px)	   |   heading kecil
+text-3xl	 |  1.875rem (30px)	 |   heading sedang
+text-4xl	 |  2.25rem (36px)	 |   heading besar
+text-5xl	 |  3rem (48px)	     |   judul besar
+text-6xl	 |  3.75rem (60px)	 |   super besar
+text-7xl	 |  4.5rem (72px)	   |   ekstra besar
+text-8xl	 |  6rem (96px)	     |   raksasa
+text-9xl	 |  8rem (128px)	   |   super jumbo 😎

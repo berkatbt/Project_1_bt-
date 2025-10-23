@@ -11,33 +11,29 @@ import DashboardUsers from "./page/admin/page/dashbardUser.jsx";
 import LoginAdmin from "./page/auth/loginAdmin.jsx";
 import DashboardBuku from "./page/admin/page/dashboardbuku.jsx";
 import FavoritPage from "./page/home/favorit.jsx";
+import Beranda_Dasboard from "./page/admin/page/beranda.jsx";
+import Menu_Home from "./page/home/menu_home.jsx";
 
 function App() {
-  return (  
+  return (
     <Router>
       <Routes>
         {/* 🔒 Home hanya bisa diakses setelah login */}
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/"element={<Home />}/>
         {/* 🔐 Auth routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/semua" element={<SemuaBuku />} />
         <Route path="/register" element={<RegisterUsers />} />
-        <Route path="/loginAdmin" element={<LoginAdmin/>}/>
-        <Route path="/favorit" element={<FavoritPage/>} />
+        <Route path="/loginAdmin" element={<LoginAdmin />} />
+        <Route path="/favorit" element={<FavoritPage />} />
         
+
         {/* Route dasboard */},
-        <Route path="/dashboard" element={<LayoutDash/>}>
-          <Route index element={<Dashboard_home/>}/>
-          <Route path="Users" element={<DashboardUsers/>}/>
-          <Route path="Buku" element={<DashboardBuku/>}/>
+        <Route path="/dashboard" element={<LayoutDash />}>
+          <Route index element={<Beranda_Dasboard />} />
+          <Route path="#" element={<DashboardUsers />} />
         </Route>
+
       </Routes>
     </Router>
   );

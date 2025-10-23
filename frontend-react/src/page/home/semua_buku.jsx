@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { auth } from "../../firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import LoadingSpinner from "../../hooks/LoadingSpinner";
 
 // css
 import "../../css/semua.css"
 import { FirebaseError } from "firebase/app";
+import { FaFacebook, FaInstagram, FaGithub } from "react-icons/fa";
 
 export default function SemuaBuku() {
   const [showModal, setShowModal] = useState(false);
@@ -58,9 +60,8 @@ export default function SemuaBuku() {
 
   if (loading) {
     return (
-      <div className="loading-container">
-        <div className="loading-spinner"></div>
-        <p>Memuat koleksi buku...</p>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+        <LoadingSpinner size={80} stroke={7} color="#60A5FA" text="Memuat data..." />
       </div>
     );
   }
@@ -89,23 +90,6 @@ export default function SemuaBuku() {
 
   return (
     <div className="semua-buku-page">
-      {/* Header Section */}
-      <div className="buku-header">
-        <div className="header-content">
-          <h1 className="page-title">Koleksi Buku</h1>
-          <p className="page-subtitle">kami memberikan kesempatan ke pada user untuk menambah koleksi buku</p>
-        </div>
-        <div className="header-stats">
-          <div className="stat-card">
-            <div className="stat-icon"></div>
-            <div className="stat-info">
-              <span className="stat-number">Buku</span>
-              <span className="stat-label">{buku.length}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Controls Section */}
       <div className="controls-section">
         <div className="search-box">
@@ -118,20 +102,21 @@ export default function SemuaBuku() {
           />
         </div>
 
-        <div className="filter-controls">
+        <div className="filter-controls w-64 mx-auto mb-6 justify-end  mr-[20px]">
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="filter-select"
+            className="w-full bg-white/20 backdrop-blur-md border border-white/30 rounded-xl px-4 py-2 text-gray-800 font-medium shadow-md hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 cursor-pointer"
           >
-            <option value="all">Semua Kategori</option>
+            <option value="all" className="bg-white/90 text-gray-800">Semua Kategori</option>
             {categories.map(cat => (
               cat !== "all" && (
-                <option key={cat} value={cat}>{cat}</option>
+                <option key={cat} value={cat} className="bg-white/90 text-gray-800">{cat}</option>
               )
             ))}
           </select>
         </div>
+
       </div>
 
 
@@ -148,11 +133,9 @@ export default function SemuaBuku() {
               <div
                 key={item.id}
                 className="book-card"
-                onClick={() => setSelectedBuku(item)}
                 style={{
                   animationDelay: `${index * 0.25}s`,
-                }}
-              >
+                }}>
                 <div className="book-cover-container">
                   <img
                     src={item.cover || "/placeholder-book.jpg"}
@@ -160,16 +143,16 @@ export default function SemuaBuku() {
                     className="book-cover"
                     onError={(e) => {
                       e.target.src = "https://via.placeholder.com/200x280/1e293b/ffffff?text=No+Cover";
-                    }}
-                  />
+                    }}/>
                   <div className="book-overlay">
-                    <span className="view-details">Lihat Detail</span>
+                    <span className="view-details"
+                      onClick={() => setSelectedBuku(item)}
+                    >Lihat Detail</span>
                   </div>
                   {item.kategori && (
                     <div className="book-category">{item.kategori}</div>
                   )}
                 </div>
-
                 <div className="book-info">
                   <h3 className="book-title">{item.judul}</h3>
                   <p className="book-author">oleh {item.penulis}</p>
@@ -197,11 +180,7 @@ export default function SemuaBuku() {
           <div className="modal-content-semua" onClick={(e) => e.stopPropagation()}>
             <button
               className="modal-close-semua"
-              onClick={() => setSelectedBuku(null)}
-            >
-              ✕
-            </button>
-
+              onClick={() => setSelectedBuku(null)}>✕</button>
             <div className="modal-body-semua">
               <div className="modal-cover-section-semua">
                 <img
@@ -209,11 +188,8 @@ export default function SemuaBuku() {
                   alt={selectedBuku.judul}
                   className="modal-cover-semua"
                   onError={(e) => {
-                    e.target.src = "https://via.placeholder.com/300x420/1e293b/ffffff?text=No+Cover";
-                  }}
-                />
+                    e.target.src = "https://via.placeholder.com/300x420/1e293b/ffffff?text=No+Cover";}}/>
               </div>
-
               <div className="modal-details-semua">
                 <div className="modal-header-semua">
                   <h2 className="modal-title-semua">{selectedBuku.judul}</h2>
@@ -221,33 +197,27 @@ export default function SemuaBuku() {
                     <div className="modal-category-semua">{selectedBuku.kategori}</div>
                   )}
                 </div>
-
                 <div className="detail-grid-semua">
                   <div className="detail-item-semua">
                     <span className="detail-label-semua">Penulis</span>
                     <span className="detail-value-semua">{selectedBuku.penulis}</span>
                   </div>
-
                   <div className="detail-item-semua">
                     <span className="detail-label-semua">Penerbit</span>
                     <span className="detail-value-semua">{selectedBuku.penerbit}</span>
                   </div>
-
                   <div className="detail-item-semua">
                     <span className="detail-label-semua">Tahun Terbit</span>
                     <span className="detail-value-semua">{selectedBuku.tahun_terbit}</span>
                   </div>
-
                   <div className="detail-item-semua">
                     <span className="detail-label-semua">Tebal Buku</span>
                     <span className="detail-value-semua">{selectedBuku.tebal_buku} halaman</span>
                   </div>
-
                   <div className="detail-item-semua">
                     <span className="detail-label-semua">Kategori</span>
                     <span className="detail-value-semua">{selectedBuku.kategori}</span>
                   </div>
-
                   <div className="detail-item full-width-semua">
                     <span className="detail-label-semua">Deskripsi</span>
                     <span className="detail-value-semua">{selectedBuku.deskripsi}</span>
@@ -258,6 +228,50 @@ export default function SemuaBuku() {
           </div>
         </div>
       )}
+      <footer className="footer">
+        <div className="footer-container">
+          <div className="flex items-center justify-center p-2">
+            <img
+              src="/b.png"
+              alt="logo"
+              className="w-32 md:w-40 lg:w-48 object-contain cursor-pointer transition-transform duration-300"
+            />
+          </div>
+          {/* Bagian 1 - Tentang */}
+          <div className="footer-section">
+            <h2 className="footer-title">📚 Jejak Buku</h2>
+            <p className="footer-text">
+              Temukan ribuan koleksi buku menarik mulai dari fiksi, non-fiksi, hingga buku pelajaran.
+              Jejak Buku adalah tempat terbaik untuk para pembaca sejati.
+            </p>
+          </div>
+
+          {/* Bagian 2 - Navigasi */}
+          <div className="footer-section">
+            <h3 className="footer-subtitle">Navigasi</h3>
+            <ul className="footer-links">
+              <li><a href="/semua">semua</a></li>
+              <li><a href="/favorit">Favorit</a></li>
+              <li><a href="#">Tentang</a></li>
+            </ul>
+          </div>
+
+          {/* Bagian 3 - Sosial Media */}
+          <div className="footer-section">
+            <h3 className="footer-subtitle">Ikuti Kami</h3>
+            <div className="footer-socials">
+              <a href="https://www.facebook.com/profile.php?id=100081955621560" className="social-icon-footer facebook"><FaFacebook /></a>
+              <a href="https://www.instagram.com/berkat_bt/" className="social-icon-footer instagram"><FaInstagram /></a>
+              <a href="https://github.com/berkatbt" className="social-icon-footer github"><FaGithub /></a>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="footer-bottom">
+          © {new Date().getFullYear()} katalog buku by Berkat_bt!. Semua hak dilindungi.
+        </div>
+      </footer>
     </div>
   );
 }

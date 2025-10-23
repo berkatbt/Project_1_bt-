@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "202448100371",
+    "project_id": "mobile-c52ca",
+    "storage_bucket": "mobile-c52ca.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202448100371:android:5fb1078f463fb44566f3e6",
+        "android_client_info": {
+          "package_name": "com.mobile.loginGoogle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202448100371-4kqmbakao5938f4uk8ur1in3p0d80vdn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobile.loginGoogle",
+            "certificate_hash": "89d899b213c98655d61d039cf06cff34c94a82bc"
+          }
+        },
+        {
+          "client_id": "202448100371-ifmn6g1ov7lb3p7v104prd5hiu2vdkvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3ZEjLALvGccrMsZM6AkqpU8KslDs5bic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202448100371-ifmn6g1ov7lb3p7v104prd5hiu2vdkvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

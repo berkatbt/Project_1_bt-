@@ -192,10 +192,10 @@ const handleLoginADMIN = async (e) => {
               <span className="social-text">Google</span>
             </button>
 
-            <button onClick={handleLoginADMIN} className="social-btn admin-btn">
+            {/* <button onClick={handleLoginADMIN} className="social-btn admin-btn">
               <Shield className="social-icon" size={20} />
               <span className="social-text">Admin</span>
-            </button>
+            </button> */}
           </div>
 
           <div className="register-section">

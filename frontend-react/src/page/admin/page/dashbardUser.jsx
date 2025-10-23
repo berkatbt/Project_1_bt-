@@ -60,6 +60,8 @@ function DashboardHome() {
       }
     };
 
+    
+
     updateStatus();
 
     // saat komponen unmount, set offline

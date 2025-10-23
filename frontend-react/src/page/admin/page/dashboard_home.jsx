@@ -80,6 +80,8 @@ export default function Dashboard_home() {
         fetchUsersAkfit();
     })
 
+    
+
 
     if (loading) return <p>Loading...</p>;
 
@@ -187,11 +189,6 @@ export default function Dashboard_home() {
                     </defs>
                 </svg>
             </section>
-
-            <section>
-                 
-            </section>
-
         </div>
     );
 }

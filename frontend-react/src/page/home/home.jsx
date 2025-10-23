@@ -9,6 +9,9 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 // import ScrollVelocity from "./ScrollVelocity";
 // import tambahFavorit from "../../hooks/tambahFavorit";
+import { FaFacebook, FaInstagram, FaGithub } from "react-icons/fa";
+import LoadingSpinner from "../../hooks/LoadingSpinner";
+import { motion } from "framer-motion";
 
 // 🔥 Import untuk Google Login
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -66,7 +69,6 @@ export default function Home() {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log("Foto profil dari Google:", user.photoURL); // ✅ Ini akan berisi URL foto asli
-      // Tidak perlu redirect manual — onAuthStateChanged akan tangkap otomatis
     } catch (error) {
       console.error("Error saat login dengan Google:", error);
       alert("Gagal login dengan Google. Silakan coba lagi.");
@@ -106,7 +108,7 @@ export default function Home() {
     saveVisitor();
   }, []);
 
-  //Header Section
+  //video sorotan
   const video = [
     "/video/Zenitsu _Agatsuma_4k.mp4",
     "/video/snaptik_7457712899159559429_hd.mp4",
@@ -153,28 +155,51 @@ export default function Home() {
           {user ? (
             <div className="profile-section" ref={popupRef}>
               <img
-                src={user.photoURL || "https://i.pinimg.com/1200x/17/96/f8/1796f83967cc3cc047ad58fe0e18fe62.jpg"}
+                src={user.photoURL || "Users-person.png"}
                 alt="Profil pengguna"
                 className="profile-pic"
                 onClick={() => setShowPopup(!showPopup)}
               />
               {showPopup && (
-                <div className="profile-popup">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, y: -10 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className=" absolute right-5 top-16 bg-white/95 backdrop-blur-lg shadow-2xl rounded-2xl p-6 w-64 flex flex-col items-center text-center border border-gray-100"
+                >
                   <img
-                    src={user.photoURL || "https://i.pinimg.com/1200x/17/96/f8/1796f83967cc3cc047ad58fe0e18fe62.jpg"}
-                    alt=""
+                    src={user.photoURL || "Users-person.png"}
+                    alt="Foto Profil"
+                    className="w-20 h-20 rounded-full object-cover shadow-md border-2 border-blue-500"
                   />
-                  <h3>{user.displayName || "Pengguna"}</h3>
-                  <p>{user.email}</p>
-                  <button onClick={handleLogout}>Keluar</button>
-                </div>
+                  <h3 className="mt-3 text-lg font-semibold text-gray-800">
+                    {user.displayName || "Pengguna"}
+                  </h3>
+                  <p className="text-sm text-gray-500 truncate w-full">{user.email}</p>
+
+                  <button
+                    onClick={handleLogout}
+                    className="mt-5 w-full py-2 bg-gradient-to-r from-red-500 to-pink-500 text-white font-semibold rounded-xl hover:from-red-600 hover:to-pink-600 transition-all duration-300 shadow-md"
+                  >
+                    Keluar
+                  </button>
+                </motion.div>
               )}
             </div>
           ) : (
-            // 🔥 Ganti tautan "Login" biasa dengan tombol Google Login
-            <button className="google-login-btn" onClick={handleGoogleLogin}>
-              Login dengan Google
+            <button
+              onClick={handleGoogleLogin}
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-semibold py-2 px-5 rounded-xl shadow-lg hover:scale-105 transform transition duration-300"
+            >
+              <img
+                src="https://www.svgrepo.com/show/475656/google-color.svg"
+                alt="Google logo"
+                className="w-5 h-5 bg-white rounded-full p-[2px]"
+              />
+              Login
             </button>
+
           )}
         </div>
       </nav>
@@ -288,7 +313,6 @@ export default function Home() {
                   <h3>{item.judul}</h3>
                   <p>oleh {item.penulis}</p>
                 </div>
-                {/* <button onClick={() => tambahFavorit(buku.id)}>Tambah ke Favorit</button> */}
               </div>
             ))
           ) : (
@@ -296,6 +320,52 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      <footer className="footer">
+        <div className="footer-container">
+          <div className="flex items-center justify-center p-2">
+            <img
+              src="b.png"
+              alt="logo"
+              className="w-32 md:w-40 lg:w-48 object-contain cursor-pointer transition-transform duration-300"
+            />
+          </div>
+
+          {/* Bagian 1 - Tentang */}
+          <div className="footer-section">
+            <h2 className="footer-title">📚 Jejak Buku</h2>
+            <p className="footer-text">
+              Temukan ribuan koleksi buku menarik mulai dari fiksi, non-fiksi, hingga buku pelajaran.
+              Jejak Buku adalah tempat terbaik untuk para pembaca sejati.
+            </p>
+          </div>
+
+          {/* Bagian 2 - Navigasi */}
+          <div className="footer-section">
+            <h3 className="footer-subtitle">Navigasi</h3>
+            <ul className="footer-links">
+              <li><a href="/semua">semua</a></li>
+              <li><a href="/favorit">Favorit</a></li>
+              <li><a href="#">Tentang</a></li>
+            </ul>
+          </div>
+
+          {/* Bagian 3 - Sosial Media */}
+          <div className="footer-section">
+            <h3 className="footer-subtitle">Ikuti Kami</h3>
+            <div className="footer-socials">
+              <a href="https://www.facebook.com/profile.php?id=100081955621560" className="social-icon-footer facebook"><FaFacebook /></a>
+              <a href="https://www.instagram.com/berkat_bt/" className="social-icon-footer instagram"><FaInstagram /></a>
+              <a href="https://github.com/berkatbt" className="social-icon-footer github"><FaGithub /></a>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="footer-bottom">
+          © {new Date().getFullYear()} katalog buku by Berkat_bt!. Semua hak dilindungi.
+        </div>
+      </footer>
 
     </div>
   );
